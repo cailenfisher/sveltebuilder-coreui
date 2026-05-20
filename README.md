@@ -1,65 +1,47 @@
-# Svelte library
+# SvelteBuilder UI
 
-Everything you need to build a Svelte library, powered by [`sv`](https://npmjs.com/package/sv).
+The core UI component library for the SvelteBuilder ecosystem — a set of universal, accessible, lightly styled components that domain modules (commerce, logistics, and others) build on.
 
-Read more about creating a library [in the docs](https://svelte.dev/docs/kit/packaging).
+## What this is
 
-## Creating a project
+SvelteBuilder UI provides the foundational layer of components used across every SvelteBuilder module. Components are intentionally low-level and minimally styled: they are fully functional and visually coherent out of the box, but carry no branding. Consuming projects layer their own design and enhanced styling on top.
 
-If you're seeing this, you've probably already done this step. Congrats!
+This library owns its component API, its styling, and its design tokens. Accessibility-critical interaction behavior (focus management, keyboard handling, ARIA wiring) is delegated to [Bits UI](https://bits-ui.com) primitives, which SvelteBuilder UI wraps behind its own consistent interface.
 
-```sh
-# create a new project in the current directory
-npx sv create
+For the full reasoning behind building a custom library rather than adopting an existing one, see **[Why Custom UI](https://github.com/cailenfisher/SvelteBuilder/wiki/Why-a-Custom-UI-Library)**.
 
-# create a new project in my-app
-npx sv create my-app
-```
+## Requirements
 
-To recreate this project with the same configuration:
+- **Svelte 5** — the library is written entirely with Svelte 5 runes.
+- **Tailwind CSS** — required in the consuming project to process component classes.
+- **Bits UI** — installed as a dependency of this library; no separate setup needed.
 
-```sh
-# recreate this project
-pnpm dlx sv@0.15.3 create --template library --types ts --add eslint tailwindcss="plugins:none" --install pnpm ./
-```
+Each component's full API — props, events, and slots — is documented inline in the component source. Open the component file for authoritative, version-accurate documentation.
 
-## Developing
+## Design principles
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+- **Shared primitives.** Components compose on shared primitives rather than duplicating logic. A core `Button`, for example, backs both an `ActionButton` (which takes a function) and a `LinkButton` (which takes an `href`) — identical in appearance and behavior, different only in what they do.
+- **Semantic, idiomatic code.** Real HTML elements over generic containers; native Svelte 5 idioms throughout.
+- **Minimal, overridable styling.** Just enough Tailwind for clear interactive states and visual coherence. Every component accepts a merged `class` prop, and brandable values route through design tokens so consuming projects can restyle centrally.
+- **Consistent APIs.** Shared types — size scales, variant names, common prop shapes — are reused across the library so that learning one component carries over to the rest.
+- **Eager, explicit error handling.** Functional code validates inputs early and reports failures with a consistent, origin-identifying format: `Component->Function: message`.
 
-```sh
-npm run dev
+## Accessibility
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+Accessibility is a hard requirement for this library, not a finishing touch. Components use semantic HTML, expose visible focus states, support full keyboard operation, and associate labels with their controls. Interaction-heavy components are built on Bits UI primitives, which are designed against WAI-ARIA practices. Accessibility regressions are treated as defects.
 
-Everything inside `src/lib` is part of your library, everything inside `src/routes` can be used as a showcase or preview app.
+## Scope
 
-## Building
+This library covers universal UI components — presentational elements, form controls, and overlays. It deliberately **excludes navigation** (navbars, breadcrumbs, menus, sidebars), which is handled by a sibling library, and **domain-specific components**, which belong to the relevant SvelteBuilder module.
 
-To build your library:
+## Conventions
 
-```sh
-npm pack
-```
+This project follows strict naming and structural conventions. Contributors should review them before submitting changes: see **[Naming Conventions](https://github.com/cailenfisher/SvelteBuilder/wiki/Naming-Conventions)**.
 
-To create a production version of your showcase app:
+## Contributing
 
-```sh
-npm run build
-```
+Contributions, issue reports, and feedback are welcome. Please review the naming conventions linked above and keep changes consistent with the design principles in this document. Accessibility and API consistency are reviewed on every contribution.
 
-You can preview the production build with `npm run preview`.
+## License
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
-
-## Publishing
-
-Go into the `package.json` and give your package the desired name through the `"name"` option. Also consider adding a `"license"` field and point it to a `LICENSE` file which you can create from a template (one popular option is the [MIT license](https://opensource.org/license/mit/)).
-
-To publish your library to [npm](https://www.npmjs.com):
-
-```sh
-npm publish
-```
+TBD
