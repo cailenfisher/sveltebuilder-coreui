@@ -1,0 +1,1777 @@
+{
+  "$schema": "http://json.schemastore.org/web-types",
+  "name": "sveltebuilder-coreui",
+  "version": "0.0.1",
+  "description-markup": "markdown",
+  "framework": "svelte",
+  "contributions": {
+    "html": {
+      "elements": [
+        {
+          "name": "Button",
+          "description": "A versatile button component with variant and size options. Supports a loading state that disables interaction and renders a spinner. Extends all standard HTML button attributes.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Button"
+          },
+          "attributes": [
+            {
+              "name": "variant",
+              "description": "Visual style of the button.",
+              "value": {
+                "kind": "expression",
+                "type": "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'outline'"
+              },
+              "default": "'default'"
+            },
+            {
+              "name": "size",
+              "description": "Controls the height, padding, and text size of the button.",
+              "value": {
+                "kind": "expression",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "loading",
+              "description": "When true, disables the button and renders an inline spinner.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "type",
+              "description": "HTML button type attribute.",
+              "value": {
+                "kind": "expression",
+                "type": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'"
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the button and prevents interaction.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes to apply to the button element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Button label content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ActionButton",
+          "description": "A button that wraps an async action function. Manages its own pending state during the async operation and surfaces errors via an optional `onerror` callback.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "ActionButton"
+          },
+          "attributes": [
+            {
+              "name": "action",
+              "description": "Required. The function (sync or async) to invoke on click.",
+              "value": {
+                "kind": "expression",
+                "type": "() => void | Promise<void>"
+              },
+              "required": true
+            },
+            {
+              "name": "variant",
+              "description": "Visual style of the button.",
+              "value": {
+                "kind": "expression",
+                "type": "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'outline'"
+              }
+            },
+            {
+              "name": "size",
+              "description": "Controls the height, padding, and text size.",
+              "value": {
+                "kind": "expression",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              }
+            },
+            {
+              "name": "loading",
+              "description": "Additional external loading state layered on top of the internal pending state.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the button and prevents the action from firing.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "type",
+              "description": "HTML button type attribute.",
+              "value": {
+                "kind": "expression",
+                "type": "'button' | 'submit' | 'reset'"
+              }
+            },
+            {
+              "name": "onerror",
+              "description": "Called with the thrown value when the action rejects.",
+              "value": {
+                "kind": "expression",
+                "type": "(error: unknown) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes to apply to the button element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Button label content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "LinkButton",
+          "description": "An anchor element styled as a button. Use when the action navigates to a URL rather than triggering a side effect.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "LinkButton"
+          },
+          "attributes": [
+            {
+              "name": "href",
+              "description": "Required. The URL the link navigates to.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "variant",
+              "description": "Visual style of the button.",
+              "value": {
+                "kind": "expression",
+                "type": "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'outline'"
+              },
+              "default": "'default'"
+            },
+            {
+              "name": "size",
+              "description": "Controls the height, padding, and text size.",
+              "value": {
+                "kind": "expression",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "disabled",
+              "description": "Applies disabled styling and prevents navigation.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes to apply to the anchor element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Link label content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "IconButton",
+          "description": "A square button intended to hold a single icon. Requires an `aria-label` for accessibility.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "IconButton"
+          },
+          "attributes": [
+            {
+              "name": "aria-label",
+              "description": "Required. Accessible label describing the button's action.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "variant",
+              "description": "Visual style of the button.",
+              "value": {
+                "kind": "expression",
+                "type": "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger' | 'ghost' | 'outline'"
+              },
+              "default": "'ghost'"
+            },
+            {
+              "name": "size",
+              "description": "Controls the button dimensions.",
+              "value": {
+                "kind": "expression",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "type",
+              "description": "HTML button type attribute.",
+              "value": {
+                "kind": "expression",
+                "type": "'button' | 'submit' | 'reset'"
+              },
+              "default": "'button'"
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the button.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes to apply to the button element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Icon content (Svelte 5 snippet). Typically an SVG icon.",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Card",
+          "description": "A surface container with optional header and footer regions. All three regions are snippet-based so they can accept arbitrary Svelte content.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Card"
+          },
+          "attributes": [
+            {
+              "name": "header",
+              "description": "Rendered above the main content area (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "footer",
+              "description": "Rendered below the main content area (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Main card body content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes to apply to the card root element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Badge",
+          "description": "A small inline label for status or category. Pairs well with text, table cells, and list items.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Badge"
+          },
+          "attributes": [
+            {
+              "name": "variant",
+              "description": "Color scheme of the badge.",
+              "value": {
+                "kind": "expression",
+                "type": "'default' | 'primary' | 'secondary' | 'success' | 'warning' | 'danger'"
+              },
+              "default": "'default'"
+            },
+            {
+              "name": "size",
+              "description": "Controls badge height and text size.",
+              "value": {
+                "kind": "expression",
+                "type": "'sm' | 'md' | 'lg'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Badge label content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tag",
+          "description": "A removable chip or label. When `dismissible` is true, renders a close button that calls `onDismiss`.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Tag"
+          },
+          "attributes": [
+            {
+              "name": "dismissible",
+              "description": "When true, renders a close button alongside the tag content.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "onDismiss",
+              "description": "Called when the close button is clicked.",
+              "value": {
+                "kind": "expression",
+                "type": "() => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Tag label content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Alert",
+          "description": "An inline notification banner. Use `severity` to communicate the nature of the message. When `dismissible` is true, a close button is rendered.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Alert"
+          },
+          "attributes": [
+            {
+              "name": "severity",
+              "description": "Determines icon and color scheme.",
+              "value": {
+                "kind": "expression",
+                "type": "'info' | 'success' | 'warning' | 'error'"
+              },
+              "default": "'info'"
+            },
+            {
+              "name": "title",
+              "description": "Optional bold heading rendered above the body content.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "dismissible",
+              "description": "When true, renders a close button.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "onDismiss",
+              "description": "Called when the close button is clicked.",
+              "value": {
+                "kind": "expression",
+                "type": "() => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the alert root element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Alert body content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Spinner",
+          "description": "An animated loading indicator. Renders an `aria-live` region with a visually hidden label for screen readers.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Spinner"
+          },
+          "attributes": [
+            {
+              "name": "size",
+              "description": "Controls the diameter of the spinner.",
+              "value": {
+                "kind": "expression",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "label",
+              "description": "Visually hidden text announced to screen readers.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Loading'"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Skeleton",
+          "description": "A placeholder shape that mimics the layout of content while it loads.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Skeleton"
+          },
+          "attributes": [
+            {
+              "name": "width",
+              "description": "CSS width value for the skeleton block.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'100%'"
+            },
+            {
+              "name": "height",
+              "description": "CSS height value for the skeleton block.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'1rem'"
+            },
+            {
+              "name": "rounded",
+              "description": "Border radius. Pass `true` for the default rounding or a named token.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean | 'sm' | 'md' | 'lg' | 'full'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Divider",
+          "description": "A visual separator line built on Bits UI's Separator primitive. Defaults to decorative (no semantic role).",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Divider"
+          },
+          "attributes": [
+            {
+              "name": "orientation",
+              "description": "Draws the line horizontally or vertically.",
+              "value": {
+                "kind": "expression",
+                "type": "'horizontal' | 'vertical'"
+              },
+              "default": "'horizontal'"
+            },
+            {
+              "name": "decorative",
+              "description": "When true the element is hidden from the accessibility tree. Set to false to expose it as a separator landmark.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "true"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "ProgressBar",
+          "description": "A progress indicator built on Bits UI's Progress primitive. Pass `null` for `value` to render an indeterminate state.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "ProgressBar"
+          },
+          "attributes": [
+            {
+              "name": "value",
+              "description": "Current progress value. Pass `null` for an indeterminate state.",
+              "value": {
+                "kind": "expression",
+                "type": "number | null"
+              },
+              "default": "0"
+            },
+            {
+              "name": "max",
+              "description": "Maximum value of the progress range.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "100"
+            },
+            {
+              "name": "min",
+              "description": "Minimum value of the progress range.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "0"
+            },
+            {
+              "name": "label",
+              "description": "Accessible label for screen readers.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the track element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Avatar",
+          "description": "A user avatar built on Bits UI's Avatar primitive. Renders an image when `src` is provided and falls back to text initials or a default icon.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Avatar"
+          },
+          "attributes": [
+            {
+              "name": "src",
+              "description": "URL of the avatar image.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "alt",
+              "description": "Alt text for the avatar image.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "fallback",
+              "description": "Text (typically 1–2 initials) shown when the image fails to load.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "size",
+              "description": "Controls the avatar diameter.",
+              "value": {
+                "kind": "expression",
+                "type": "'xs' | 'sm' | 'md' | 'lg' | 'xl'"
+              },
+              "default": "'md'"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Label",
+          "description": "A form label built on Bits UI's Label primitive. Associates with an input via the `for` attribute and applies disabled/required styling.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Label"
+          },
+          "attributes": [
+            {
+              "name": "for",
+              "description": "ID of the form control this label describes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "required",
+              "description": "Appends a required indicator to the label text.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "Applies muted styling to indicate the associated control is disabled.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Label text content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Checkbox",
+          "description": "A checkbox built on Bits UI's Checkbox primitive. Supports two-way binding on `checked` and an indeterminate state.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Checkbox"
+          },
+          "attributes": [
+            {
+              "name": "checked",
+              "description": "Bindable. Whether the checkbox is checked.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "indeterminate",
+              "description": "Bindable. Renders a mixed/indeterminate state.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "Prevents interaction.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "required",
+              "description": "Marks the field as required for form validation.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "Name attribute for form submission.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "value",
+              "description": "Value submitted with the form when checked.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "description": "Inline label text rendered next to the checkbox.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "id",
+              "description": "ID applied to the input for external label association.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "onCheckedChange",
+              "description": "Called with the new checked state whenever it changes.",
+              "value": {
+                "kind": "expression",
+                "type": "(checked: boolean) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "RadioGroup",
+          "description": "A group of radio buttons built on Bits UI's RadioGroup primitive. Renders from a flat `items` array.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "RadioGroup"
+          },
+          "attributes": [
+            {
+              "name": "items",
+              "description": "Required. Array of radio options to render.",
+              "value": {
+                "kind": "expression",
+                "type": "Array<{ value: string; label: string; disabled?: boolean }>"
+              },
+              "required": true
+            },
+            {
+              "name": "value",
+              "description": "Bindable. The value of the currently selected radio.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "name",
+              "description": "Name attribute for form submission.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables all options in the group.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "required",
+              "description": "Marks the field as required for form validation.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "orientation",
+              "description": "Layout direction of the radio options.",
+              "value": {
+                "kind": "expression",
+                "type": "'horizontal' | 'vertical'"
+              },
+              "default": "'vertical'"
+            },
+            {
+              "name": "onValueChange",
+              "description": "Called with the newly selected value.",
+              "value": {
+                "kind": "expression",
+                "type": "(value: string) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Switch",
+          "description": "A toggle switch built on Bits UI's Switch primitive. Supports two-way binding on `checked`.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Switch"
+          },
+          "attributes": [
+            {
+              "name": "checked",
+              "description": "Bindable. Whether the switch is on.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "Prevents interaction.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "required",
+              "description": "Marks the field as required for form validation.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "Name attribute for form submission.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "value",
+              "description": "Value submitted with the form when on.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "label",
+              "description": "Inline label text rendered next to the switch.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "id",
+              "description": "ID applied to the input for external label association.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "onCheckedChange",
+              "description": "Called with the new checked state whenever it changes.",
+              "value": {
+                "kind": "expression",
+                "type": "(checked: boolean) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Select",
+          "description": "A custom select dropdown built on Bits UI's Select primitive. Renders from a flat `items` array and supports two-way binding on `value`.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Select"
+          },
+          "attributes": [
+            {
+              "name": "items",
+              "description": "Required. Array of options to display in the dropdown.",
+              "value": {
+                "kind": "expression",
+                "type": "Array<{ value: string; label: string; disabled?: boolean }>"
+              },
+              "required": true
+            },
+            {
+              "name": "value",
+              "description": "Bindable. The currently selected option value.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "placeholder",
+              "description": "Text shown in the trigger when no value is selected.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "'Select an option'"
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the select control.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "required",
+              "description": "Marks the field as required for form validation.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "name",
+              "description": "Name attribute for form submission.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "onValueChange",
+              "description": "Called with the newly selected value.",
+              "value": {
+                "kind": "expression",
+                "type": "(value: string) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the trigger element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Dialog",
+          "description": "A modal dialog built on Bits UI's Dialog primitive. Supports two-way binding on `open`. Pass a `trigger` snippet to render an inline trigger element, or control `open` externally.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Dialog"
+          },
+          "attributes": [
+            {
+              "name": "open",
+              "description": "Bindable. Whether the dialog is open.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "title",
+              "description": "Heading text rendered at the top of the dialog content.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "description",
+              "description": "Subheading text rendered below the title.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "trigger",
+              "description": "Snippet rendered as the dialog trigger element (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "footer",
+              "description": "Snippet rendered in the footer area — typically action buttons (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Main dialog body content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "onOpenChange",
+              "description": "Called with the new open state when the dialog opens or closes.",
+              "value": {
+                "kind": "expression",
+                "type": "(open: boolean) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the dialog content panel.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Popover",
+          "description": "A non-modal floating panel built on Bits UI's Popover primitive. Renders adjacent to its trigger with configurable side placement.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Popover"
+          },
+          "attributes": [
+            {
+              "name": "open",
+              "description": "Bindable. Whether the popover is visible.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "side",
+              "description": "Which side of the trigger the popover appears on.",
+              "value": {
+                "kind": "expression",
+                "type": "'top' | 'bottom' | 'left' | 'right'"
+              },
+              "default": "'bottom'"
+            },
+            {
+              "name": "sideOffset",
+              "description": "Distance in pixels between the popover and the trigger.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "8"
+            },
+            {
+              "name": "trigger",
+              "description": "Snippet rendered as the popover trigger element (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "children",
+              "description": "Popover panel content (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "onOpenChange",
+              "description": "Called with the new open state.",
+              "value": {
+                "kind": "expression",
+                "type": "(open: boolean) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the popover content panel.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tooltip",
+          "description": "A floating tooltip built on Bits UI's Tooltip primitive. Wraps any element passed as `children` and shows `content` on hover/focus after a configurable delay.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Tooltip"
+          },
+          "attributes": [
+            {
+              "name": "content",
+              "description": "Required. The text displayed inside the tooltip.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "side",
+              "description": "Which side of the trigger the tooltip appears on.",
+              "value": {
+                "kind": "expression",
+                "type": "'top' | 'bottom' | 'left' | 'right'"
+              },
+              "default": "'top'"
+            },
+            {
+              "name": "sideOffset",
+              "description": "Distance in pixels between the tooltip and the trigger.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "6"
+            },
+            {
+              "name": "delay",
+              "description": "Milliseconds before the tooltip appears after hover/focus.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "500"
+            },
+            {
+              "name": "disabled",
+              "description": "When true, the tooltip never opens.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "children",
+              "description": "The trigger element that the tooltip is anchored to (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the tooltip content element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Accordion",
+          "description": "A vertically stacked set of disclosure panels built on Bits UI's Accordion primitive. Supports single-open and multi-open modes.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Accordion"
+          },
+          "attributes": [
+            {
+              "name": "items",
+              "description": "Required. Array of accordion panels to render.",
+              "value": {
+                "kind": "expression",
+                "type": "Array<{ value: string; title: string; content: string; disabled?: boolean }>"
+              },
+              "required": true
+            },
+            {
+              "name": "type",
+              "description": "Whether only one panel can be open at a time (`single`) or multiple (`multiple`).",
+              "value": {
+                "kind": "expression",
+                "type": "'single' | 'multiple'"
+              },
+              "default": "'single'"
+            },
+            {
+              "name": "value",
+              "description": "Bindable. The currently open panel value(s). A string when `type` is `single`, a string array when `type` is `multiple`.",
+              "value": {
+                "kind": "expression",
+                "type": "string | string[]"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables all panels in the accordion.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "onValueChange",
+              "description": "Called with the new open value(s) when a panel is toggled.",
+              "value": {
+                "kind": "expression",
+                "type": "((value: string) => void) | ((value: string[]) => void)"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the accordion root.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Tabs",
+          "description": "A tabbed interface built on Bits UI's Tabs primitive. Renders tab triggers and their associated content panels from a flat `items` array.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Tabs"
+          },
+          "attributes": [
+            {
+              "name": "items",
+              "description": "Required. Array of tab definitions.",
+              "value": {
+                "kind": "expression",
+                "type": "Array<{ value: string; label: string; content: string; disabled?: boolean }>"
+              },
+              "required": true
+            },
+            {
+              "name": "value",
+              "description": "Bindable. The value of the currently active tab. Defaults to the first item's value.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "onValueChange",
+              "description": "Called with the newly activated tab value.",
+              "value": {
+                "kind": "expression",
+                "type": "(value: string) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the tabs root element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Pagination",
+          "description": "A pagination control built on Bits UI's Pagination primitive. Renders numbered page buttons, previous/next controls, and ellipsis indicators.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Pagination"
+          },
+          "attributes": [
+            {
+              "name": "count",
+              "description": "Required. Total number of items across all pages.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "required": true
+            },
+            {
+              "name": "perPage",
+              "description": "Number of items per page, used to calculate the total page count.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "10"
+            },
+            {
+              "name": "siblingCount",
+              "description": "Number of page buttons shown on each side of the current page.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "1"
+            },
+            {
+              "name": "page",
+              "description": "Bindable. The currently active page number (1-indexed).",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "1"
+            },
+            {
+              "name": "onPageChange",
+              "description": "Called with the new page number when the user navigates.",
+              "value": {
+                "kind": "expression",
+                "type": "(page: number) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the pagination root.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Menu",
+          "description": "A dropdown context menu built on Bits UI's DropdownMenu primitive. Renders a list of action items from the `items` array, including optional separators.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Menu"
+          },
+          "attributes": [
+            {
+              "name": "items",
+              "description": "Required. Array of menu items and separators. A separator entry is `{ separator: true }`. An action entry is `{ label: string; action?: () => void | Promise<void>; disabled?: boolean }`.",
+              "value": {
+                "kind": "expression",
+                "type": "Array<{ separator: true } | { separator?: false; label: string; action?: () => void | Promise<void>; disabled?: boolean }>"
+              },
+              "required": true
+            },
+            {
+              "name": "trigger",
+              "description": "Snippet rendered as the menu trigger element (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "side",
+              "description": "Which side of the trigger the menu opens on.",
+              "value": {
+                "kind": "expression",
+                "type": "'top' | 'bottom' | 'left' | 'right'"
+              },
+              "default": "'bottom'"
+            },
+            {
+              "name": "sideOffset",
+              "description": "Distance in pixels between the menu and the trigger.",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              },
+              "default": "6"
+            },
+            {
+              "name": "open",
+              "description": "Bindable. Whether the menu is open.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "onOpenChange",
+              "description": "Called with the new open state.",
+              "value": {
+                "kind": "expression",
+                "type": "(open: boolean) => void"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the menu content panel.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Input",
+          "description": "A styled text input that extends all standard HTML input attributes. Displays an inline error message below when `error` is set.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Input"
+          },
+          "attributes": [
+            {
+              "name": "value",
+              "description": "Bindable. The current input value.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "error",
+              "description": "Error message displayed below the input. Applies error ring styling when set.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the input.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the input element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Textarea",
+          "description": "A styled textarea that extends all standard HTML textarea attributes. Supports configurable resize behavior and inline error display.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Textarea"
+          },
+          "attributes": [
+            {
+              "name": "value",
+              "description": "Bindable. The current textarea value.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "default": "''"
+            },
+            {
+              "name": "error",
+              "description": "Error message displayed below the textarea. Applies error ring styling when set.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "resize",
+              "description": "Controls which directions the user can resize the textarea.",
+              "value": {
+                "kind": "expression",
+                "type": "'none' | 'vertical' | 'horizontal' | 'both'"
+              },
+              "default": "'vertical'"
+            },
+            {
+              "name": "disabled",
+              "description": "Disables the textarea.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the textarea element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Field",
+          "description": "A form field wrapper that composes a Label, optional hint text, an error message, and a form control slot. Handles `id` linkage and required/disabled state.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Field"
+          },
+          "attributes": [
+            {
+              "name": "label",
+              "description": "Required. Text for the field label.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "id",
+              "description": "Required. ID linking the label to its form control.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              },
+              "required": true
+            },
+            {
+              "name": "hint",
+              "description": "Helper text rendered below the label and above any error.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "error",
+              "description": "Error message rendered below the control. Also puts the field into an error state.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "required",
+              "description": "Passes required styling through to the label.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "Passes disabled styling through to the label.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "children",
+              "description": "The form control (e.g. Input, Select) rendered inside the field (Svelte 5 snippet).",
+              "value": {
+                "kind": "expression",
+                "type": "Snippet"
+              }
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the field root element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        },
+        {
+          "name": "Table",
+          "description": "A responsive data table. Renders columns defined by a `TableColumn` array against an array of row objects. Supports striped rows and a screen-reader caption.",
+          "source": {
+            "module": "sveltebuilder-coreui",
+            "symbol": "Table"
+          },
+          "attributes": [
+            {
+              "name": "columns",
+              "description": "Required. Column definitions. `key` must match a property on the row type.",
+              "value": {
+                "kind": "expression",
+                "type": "Array<{ key: string; label: string; align?: 'left' | 'center' | 'right' }>"
+              },
+              "required": true
+            },
+            {
+              "name": "rows",
+              "description": "Required. Array of data objects to render as table rows.",
+              "value": {
+                "kind": "expression",
+                "type": "Record<string, unknown>[]"
+              },
+              "required": true
+            },
+            {
+              "name": "caption",
+              "description": "Screen-reader-only caption text for the table.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "striped",
+              "description": "When true, alternating rows receive a subtle background tint.",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              },
+              "default": "false"
+            },
+            {
+              "name": "class",
+              "description": "Additional CSS classes applied to the table wrapper element.",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
